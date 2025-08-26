@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Billetera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private float salary;
 
@@ -24,7 +24,7 @@ public class Billetera {
     public Billetera() {
     }
 
-    public Billetera(Integer id, float salary, float salaryInDollars) {
+    public Billetera(Long id, float salary, float salaryInDollars) {
         this.id = id;
         this.salary = salary;
         this.salaryInDollars = salaryInDollars;

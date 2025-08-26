@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
     private String lastname;
@@ -23,7 +23,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(Integer id, String name, String lastname, Billetera wallet) {
+    public Person(Long id, String name, String lastname, Billetera wallet) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
