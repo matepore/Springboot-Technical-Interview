@@ -1,18 +1,34 @@
 package com.technical.springboot.matepore.Springboot_Technical_Interview.entities;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.*;
 
-@Component
+@Entity
+@Table(name="billeteras")
 public class Billetera {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private float salary;
-    private float dollarsConversion;
+
+    @Column(name = "salary_in_dollars")
+    private float salaryInDollars;
 
     public Billetera() {
     }
 
-    public Billetera(float salary, float dollarsConversion) {
+    public Billetera(Integer id, float salary, float salaryInDollars) {
+        this.id = id;
         this.salary = salary;
-        this.dollarsConversion = dollarsConversion;
+        this.salaryInDollars = salaryInDollars;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public float getSalary() {
@@ -23,11 +39,11 @@ public class Billetera {
         this.salary = salary;
     }
 
-    public float getDollarsConversion() {
-        return dollarsConversion;
+    public float getSalaryInDollars() {
+        return salaryInDollars;
     }
 
-    public void setDollarsConversion(float dollarsConversion) {
-        this.dollarsConversion = dollarsConversion;
+    public void setSalaryInDollars(float salaryInDollars) {
+        this.salaryInDollars = salaryInDollars;
     }
 }

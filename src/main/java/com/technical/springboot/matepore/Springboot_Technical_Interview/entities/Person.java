@@ -1,10 +1,14 @@
 package com.technical.springboot.matepore.Springboot_Technical_Interview.entities;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.*;
 
-@Component
+@Entity
+@Table(name="persons")
 public class Person {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String name;
     private String lastname;
     private Billetera wallet;
@@ -12,17 +16,18 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String name, String lastname) {
+    public Person(Integer id, String name, String lastname, Billetera wallet) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
+        this.wallet = wallet;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,5 +45,13 @@ public class Person {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Billetera getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Billetera wallet) {
+        this.wallet = wallet;
     }
 }
