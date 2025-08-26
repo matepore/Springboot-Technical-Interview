@@ -1,9 +1,16 @@
 package com.technical.springboot.matepore.Springboot_Technical_Interview.entities;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
 @Table(name="billeteras")
+@Setter
+@Getter
+@Builder
 public class Billetera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,27 +30,4 @@ public class Billetera {
         this.salaryInDollars = salaryInDollars;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public float getSalary() {
-        return salary;
-    }
-
-    public void setSalary(float salary) {
-        this.salary = salary;
-    }
-
-    public float getSalaryInDollars() {
-        return salaryInDollars;
-    }
-
-    public void setSalaryInDollars(float salaryInDollars) {
-        this.salaryInDollars = salaryInDollars;
-    }
 }

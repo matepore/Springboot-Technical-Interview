@@ -1,9 +1,16 @@
 package com.technical.springboot.matepore.Springboot_Technical_Interview.entities;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
 @Table(name="persons")
+@Setter
+@Getter
+@Builder
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,35 +30,4 @@ public class Person {
         this.wallet = wallet;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Billetera getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Billetera wallet) {
-        this.wallet = wallet;
-    }
 }
