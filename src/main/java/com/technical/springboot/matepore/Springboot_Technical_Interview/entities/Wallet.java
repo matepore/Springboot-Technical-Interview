@@ -7,24 +7,25 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name="billeteras")
+@Table(name="wallets")
 @Setter
 @Getter
 @Builder
-public class Billetera {
+public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private float salary;
 
     @Column(name = "salary_in_dollars")
     private float salaryInDollars;
 
-    public Billetera() {
+    public Wallet() {
     }
 
-    public Billetera(Long id, float salary, float salaryInDollars) {
+    public Wallet(Long id, float salary, float salaryInDollars) {
         this.id = id;
         this.salary = salary;
         this.salaryInDollars = salaryInDollars;

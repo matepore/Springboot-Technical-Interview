@@ -16,14 +16,20 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String lastname;
-    private Billetera wallet;
+
+    @OneToOne
+    @JoinColumn(name = "wallet_id", referencedColumnName = "id")
+    private Wallet wallet;
 
     public Person() {
     }
 
-    public Person(Long id, String name, String lastname, Billetera wallet) {
+    public Person(Long id, String name, String lastname, Wallet wallet) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;

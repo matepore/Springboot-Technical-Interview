@@ -7,15 +7,15 @@ import lombok.Setter;
 @Setter
 @Getter
 @Builder
-public class BilleteraDto {
+public class WalletDto {
     private Long id;
     private float salary;
     private float salaryInDollars;
 
-    public BilleteraDto() {
+    public WalletDto() {
     }
 
-    public BilleteraDto(Long id, float salary, float salaryInDollars) {
+    public WalletDto(Long id, float salary, float salaryInDollars) {
         this.id = id;
         this.salary = salary;
         this.salaryInDollars = salaryInDollars;

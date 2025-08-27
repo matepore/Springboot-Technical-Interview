@@ -1,23 +1,23 @@
 package com.technical.springboot.matepore.Springboot_Technical_Interview.services;
 
-import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.BilleteraDto;
+import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.WalletDto;
 
 import java.util.Collections;
 import java.util.List;
 
-public class BilleteraServiceImpl implements BilleteraService{
+public class WalletServiceImpl implements WalletService {
     @Override
-    public BilleteraDto create(BilleteraDto bdto) {
+    public WalletDto create(WalletDto bdto) {
         return null;
     }
 
     @Override
-    public BilleteraDto findById(Long id) {
+    public WalletDto findById(Long id) {
         return null;
     }
 
     @Override
-    public BilleteraDto update(Long id, BilleteraDto bdto) {
+    public WalletDto update(Long id, WalletDto bdto) {
         return null;
     }
 
@@ -27,7 +27,7 @@ public class BilleteraServiceImpl implements BilleteraService{
     }
 
     @Override
-    public List<BilleteraDto> list() {
+    public List<WalletDto> list() {
         return Collections.emptyList();
     }
 }
