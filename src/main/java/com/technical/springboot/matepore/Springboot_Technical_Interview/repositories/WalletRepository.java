@@ -3,6 +3,6 @@ package com.technical.springboot.matepore.Springboot_Technical_Interview.reposit
 import com.technical.springboot.matepore.Springboot_Technical_Interview.entities.Wallet;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WalletRepository extends JpaRepository<Wallet, Integer> {
+public interface WalletRepository extends JpaRepository<Wallet, Long> {
 
 }
