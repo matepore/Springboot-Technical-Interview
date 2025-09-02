@@ -5,6 +5,7 @@ import com.technical.springboot.matepore.Springboot_Technical_Interview.entities
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.DuplicatedWalletException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.WalletNotFoundException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.WalletRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +13,11 @@ import java.util.List;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class WalletServiceImpl implements WalletService {
 
     private final WalletRepository wRepository;
-
-    public WalletServiceImpl(WalletRepository wRepository) {
-        this.wRepository = wRepository;
-    }
+    private final DollarService dollarService;
 
     private WalletDto mapDto(Wallet wallet){
         return WalletDto.builder()
@@ -60,7 +59,7 @@ public class WalletServiceImpl implements WalletService {
         Wallet wallet = wRepository.findById(id).orElseThrow(() -> new WalletNotFoundException(id));
         wallet.setId(wdto.getId());
         wallet.setSalary(wdto.getSalary());
-        wallet.setSalaryInDollars(wdto.getSalaryInDollars());
+        wallet.setSalaryInDollars(getDollarSalary(wdto.getSalary()));
         return mapDto(wRepository.save(wallet));
     }
 
@@ -77,5 +76,9 @@ public class WalletServiceImpl implements WalletService {
     public List<WalletDto> list() {
         log.info("Showing a list of all the wallets.");
         return wRepository.findAll().stream().map(wallet -> this.mapDto(wallet)).toList();
+    }
+
+    private float getDollarSalary(float salary){
+        return salary * dollarService.getBlue().getCompra();
     }
 }
