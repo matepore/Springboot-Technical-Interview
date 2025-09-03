@@ -5,6 +5,9 @@ import com.technical.springboot.matepore.Springboot_Technical_Interview.entities
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.DuplicatedPersonException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.PersonNotFoundException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.PersonRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +52,7 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
+    @Cacheable("persons")
     public PersonDto findById(Long id) {
         log.info("Trying to find a person by the id: {}", id);
         return pRepository.findById(id)
@@ -57,6 +61,7 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
+    @CachePut(value = "persons", key = "result.id")
     public PersonDto update(Long id, PersonDto pdto) {
         log.info("Updating the person with the id: {}", id);
         Person person = pRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
@@ -67,6 +72,7 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
+    @CacheEvict(value = "persons", key = "#id")
     public void delete(Long id) {
         log.info("Deleting the person with the id: {}", id);
         if(!pRepository.existsById(id)){

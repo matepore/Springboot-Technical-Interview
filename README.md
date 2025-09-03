@@ -7,6 +7,7 @@ It has:
 - **Controller**, **DTO**, **Entity**, **Repository** and **Service** layers.
 - Personalized exceptions.
 - Logs.
+- Open Api integration.
 
 ---
 
@@ -16,6 +17,7 @@ It has:
 - Maven
 - H2 Database
 - Lombok
+- Open Api
 - IntelliJ Community Edition 2025 IDE
 
 ---
@@ -31,6 +33,7 @@ It has:
 - **H2 Console**: `localhost:8080/h2-console`
     - The login information is in the application.properties file in the resource folder.
 - **API REST**: `localhost:8080/api/persons` and `localhost:8080/api/wallets`
+- **Open Api Swagger**: `http://localhost:8080/swagger-ui/index.html#/`
 
 ### Endpoints
 

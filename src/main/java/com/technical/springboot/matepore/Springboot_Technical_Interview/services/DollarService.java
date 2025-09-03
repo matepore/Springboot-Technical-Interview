@@ -17,9 +17,9 @@ public class DollarService {
         DollarResponse dollarResponse = null;
         try {
             dollarResponse = dollarApiClient.getBlue();
-            log.info("La platita en dolar es: " + dollarResponse.getCompra());
+            log.info("The dollar blue costs: " + dollarResponse.getCompra());
         } catch (Exception e) {
-            log.error("Error en get blue " + e.getMessage());
+            log.error("Error in get blue " + e.getMessage());
         }
         return dollarResponse;
     }
