@@ -25,18 +25,18 @@ public class WalletDto {
             description = "Salary in argentinian pesos",
             example = "350000.50"
     )
-    private float salary;
+    private Double salary;
 
     @Schema(
             description = "Salary in us dollars",
             example = "1000.75"
     )
-    private float salaryInDollars;
+    private Double salaryInDollars;
 
     public WalletDto() {
     }
 
-    public WalletDto(Long id, float salary, float salaryInDollars) {
+    public WalletDto(Long id, Double salary, Double salaryInDollars) {
         this.id = id;
         this.salary = salary;
         this.salaryInDollars = salaryInDollars;

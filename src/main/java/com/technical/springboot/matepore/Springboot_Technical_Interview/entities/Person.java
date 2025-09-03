@@ -35,5 +35,4 @@ public class Person {
         this.lastname = lastname;
         this.wallet = wallet;
     }
-
 }

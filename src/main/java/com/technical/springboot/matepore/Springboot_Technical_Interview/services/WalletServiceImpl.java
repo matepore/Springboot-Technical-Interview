@@ -84,7 +84,7 @@ public class WalletServiceImpl implements WalletService {
         return wRepository.findAll().stream().map(wallet -> this.mapDto(wallet)).toList();
     }
 
-    private float getDollarSalary(float salary){
+    private Double getDollarSalary(Double salary){
         return salary * dollarService.getBlue().getCompra();
     }
 }

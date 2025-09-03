@@ -17,18 +17,17 @@ public class Wallet {
     private Long id;
 
     @Column(nullable = false)
-    private float salary;
+    private Double salary;
 
     @Column(name = "salary_in_dollars")
-    private float salaryInDollars;
+    private Double salaryInDollars;
 
     public Wallet() {
     }
 
-    public Wallet(Long id, float salary, float salaryInDollars) {
+    public Wallet(Long id, Double salary, Double salaryInDollars) {
         this.id = id;
         this.salary = salary;
         this.salaryInDollars = salaryInDollars;
     }
-
 }
