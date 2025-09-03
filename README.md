@@ -7,6 +7,7 @@ It has:
 - **Controller**, **DTO**, **Entity**, **Repository** and **Service** layers.
 - Personalized exceptions.
 - Logs.
+- Caching.
 - Open Api integration.
 
 ---
