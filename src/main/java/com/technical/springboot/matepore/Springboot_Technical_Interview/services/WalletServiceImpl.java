@@ -2,7 +2,6 @@ package com.technical.springboot.matepore.Springboot_Technical_Interview.service
 
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.WalletDto;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.entities.Wallet;
-import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.DuplicatedWalletException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.WalletNotFoundException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.WalletRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,9 +40,6 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public WalletDto create(WalletDto wdto) {
         log.info("Adding a new wallet to the database.");
-        if(wRepository.existsById(wdto.getId())){
-            throw new DuplicatedWalletException(wdto.getId());
-        }
         Wallet wallet = wRepository.save(mapEntity(wdto));
         return mapDto(wallet);
     }

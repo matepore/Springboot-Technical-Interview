@@ -49,4 +49,9 @@ public class ExceptionHandlerController {
         error.put("message", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> internalServerException(Exception ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", ex.getMessage(), "timestamp", Instant.now().toString()));
+    }
 }

@@ -2,7 +2,6 @@ package com.technical.springboot.matepore.Springboot_Technical_Interview.service
 
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.PersonDto;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.entities.Person;
-import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.DuplicatedPersonException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.PersonNotFoundException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.PersonRepository;
 import org.springframework.cache.annotation.CacheEvict;
@@ -44,9 +43,6 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public PersonDto create(PersonDto pdto) {
         log.info("Adding a new person to the database.");
-        if(pRepository.existsById(pdto.getId())){
-            throw new DuplicatedPersonException(pdto.getId());
-        }
         Person person = pRepository.save(mapEntity(pdto));
         return mapDto(person);
     }
