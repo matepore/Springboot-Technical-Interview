@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Persons & Wallets</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+        .hero { background-color: #f8f9fa; padding: 60px 0; }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#" th:href="@{/}"><i class="fas fa-home"></i> Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/persons}"><i class="fas fa-user"></i> Persons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/wallets}"><i class="fas fa-wallet"></i> Wallets</a>
+                </li>
+            </ul>
+
+            <!-- Search Form -->
+            <form class="d-flex" th:action="@{/search}" method="get">
+                <input class="form-control me-2" type="search" name="q" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero / Header -->
+<header class="hero text-center mt-5 pt-5">
+    <div class="container">
+        <h1 class="display-4">Welcome to the Persons & Wallets Management</h1>
+        <p class="lead">Create, edit and manage persons and wallets easily.</p>
+        <a class="btn btn-primary btn-lg me-2" th:href="@{/persons}"><i class="fas fa-user"></i> Manage Persons</a>
+        <a class="btn btn-success btn-lg" th:href="@{/wallets}"><i class="fas fa-wallet"></i> Manage Wallets</a>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a th:href="@{/}"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Dashboard</h2>
+            <p>Use the navigation bar to access persons and wallets CRUD, or search for a specific record above.</p>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-3 mt-auto">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2025 - Springboot Web App made by Matepore | All rights reserved</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginSuccess = urlParams.get('loginSuccess');
+    if (loginSuccess) {
+        const toastEl = document.getElementById('loginToast');
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${person.id != null} ? 'Edit Person' : 'Add New Person'">Person Form</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sticky Footer */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1; /* hace que el contenido ocupe el espacio disponible */
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<header class="bg-dark text-white p-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h3" th:text="${person.id != null} ? 'Edit Person' : 'Add New Person'">Person Form</h1>
+        <a th:href="@{/persons}" class="btn btn-secondary">⬅ Back to List</a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="card shadow">
+        <div class="card-body">
+            <form th:action="${person.id != null} ? @{/persons/update/{id}(id=${person.id})} : @{/persons/save}"
+                  th:object="${person}" method="post">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Enter name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Lastname</label>
+                    <input type="text" th:field="*{lastname}" id="lastname" class="form-control" placeholder="Enter lastname" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="walletId" class="form-label">Wallet ID</label>
+                    <input type="number" th:field="*{wallet.id}" id="walletId" class="form-control" placeholder="Wallet ID">
+                </div>
+
+                <div class="mb-3">
+                    <label for="salary" class="form-label">Salary</label>
+                    <input type="number" step="0.01" th:field="*{wallet.salary}" id="salary" class="form-control" placeholder="Wallet Salary">
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <span th:text="${person.id != null} ? 'Update' : 'Create'">Submit</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-dark text-light py-3 mt-auto">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2025 - Springboot Web App made by Matepore | All rights reserved</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

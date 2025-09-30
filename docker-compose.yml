@@ -2,18 +2,18 @@ version: "3.9"
 
 services:
   postgres:
-    image: postgres:15
+    image: postgres:15.2
     container_name: postgres_db_persons
     restart: always
     environment:
       POSTGRES_DB: db_persons
       POSTGRES_USER: username
-      POSTGRES_PASSWORD: supercontraseñasecreta
+      POSTGRES_PASSWORD: supercontraseniasecreta
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./src/main/resources/create_tables_script.sql:/docker-entrypoint-initdb.d/create_tables_script.sql
+#      - ./src/main/resources/create_tables_script.sql:/docker-entrypoint-initdb.d/create_tables_script.sql
 
   pgadmin:
     image: dpage/pgadmin4
@@ -23,9 +23,19 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@local.com
       PGADMIN_DEFAULT_PASSWORD: admin123
     ports:
-      - "8080:80"
+      - "9000:80"
     depends_on:
       - postgres
+
+  wiremock:
+    image: wiremock/wiremock:latest
+    container_name: wiremock_server
+    ports:
+      - "9001:8080"   # Puerto externo:interno
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings
+      - ./wiremock/__files:/home/wiremock/__files
+    restart: unless-stopped
 
 volumes:
   postgres_data:

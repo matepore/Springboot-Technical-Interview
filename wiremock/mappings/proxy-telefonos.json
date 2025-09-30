@@ -1,0 +1,13 @@
+{
+  "priority": 100,
+  "request": {
+    "method": "ANY",
+    "urlPattern": "/.*"
+  },
+  "response": {
+    "proxyBaseUrl": "https://www.telefonos-maxiservicio.com",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

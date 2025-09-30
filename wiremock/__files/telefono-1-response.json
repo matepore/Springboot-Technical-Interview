@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "codigoArea": "011",
+  "numero": "1234-5678",
+  "tipo": "Celular",
+  "operadora": "Movistar",
+  "pais": "Argentina",
+  "estado": "Activo",
+  "propietario": {
+    "nombre": "Juan",
+    "apellido": "Perez"
+  }
+}

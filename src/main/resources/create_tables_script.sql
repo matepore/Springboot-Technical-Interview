@@ -1,12 +1,12 @@
 -- Tabla Wallet
-CREATE TABLE wallet (
+CREATE TABLE wallets (
     id SERIAL PRIMARY KEY,
     salary NUMERIC(15,2) NOT NULL,
     salary_in_dollars NUMERIC(15,2)
 );
 
 -- Tabla Person
-CREATE TABLE person (
+CREATE TABLE persons (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,

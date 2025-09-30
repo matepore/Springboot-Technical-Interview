@@ -1,9 +1,11 @@
 package com.technical.springboot.matepore.Springboot_Technical_Interview.services;
 
+import com.technical.springboot.matepore.Springboot_Technical_Interview.client.TelefonoApiClient;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.PersonDto;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.entities.Person;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.PersonNotFoundException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.PersonRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,13 +16,12 @@ import java.util.List;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService{
 
     private final PersonRepository pRepository;
+    private final TelefonoApiClient telefonoClient;
 
-    public PersonServiceImpl(PersonRepository pRepository) {
-        this.pRepository = pRepository;
-    }
 
     private PersonDto mapDto(Person person){
         return PersonDto.builder()
@@ -57,7 +58,6 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    @CachePut(value = "persons", key = "result.id")
     public PersonDto update(Long id, PersonDto pdto) {
         log.info("Updating the person with the id: {}", id);
         Person person = pRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
@@ -68,7 +68,6 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    @CacheEvict(value = "persons", key = "#id")
     public void delete(Long id) {
         log.info("Deleting the person with the id: {}", id);
         if(!pRepository.existsById(id)){
@@ -79,6 +78,7 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public List<PersonDto> list() {
+        log.info(telefonoClient.getNumero().getNumero() + " This is a phone number.");
         log.info("Showing a list of all persons.");
         return pRepository.findAll().stream().map(person -> this.mapDto(person)).toList();
     }

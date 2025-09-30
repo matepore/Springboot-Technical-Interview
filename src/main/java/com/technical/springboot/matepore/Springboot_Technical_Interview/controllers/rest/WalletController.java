@@ -1,7 +1,8 @@
-package com.technical.springboot.matepore.Springboot_Technical_Interview.controllers;
+package com.technical.springboot.matepore.Springboot_Technical_Interview.controllers.rest;
 
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.WalletDto;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.services.WalletService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class WalletController {
     }
 
     @PostMapping
-    public ResponseEntity<WalletDto> create(@RequestBody WalletDto wdto){
+    public ResponseEntity<WalletDto> create(@Valid @RequestBody WalletDto wdto){
         return ResponseEntity.status(HttpStatus.CREATED).body(wService.create(wdto));
     }
 

@@ -19,9 +19,9 @@ public class DollarService {
         DollarResponse dollarResponse = null;
         try {
             dollarResponse = dollarApiClient.getBlue();
-            log.info("The dollar blue costs: " + dollarResponse.getCompra());
+            log.info("The dollar blue costs: {}", dollarResponse.getCompra());
         } catch (HttpClientErrorException.NotFound e) {
-            log.error("Error in the getBlue method: " + e.getMessage());
+            log.error("Error in the getBlue method: {}", e.getMessage());
             throw new DollarNotFoundException();
         }
         return dollarResponse;
@@ -31,7 +31,7 @@ public class DollarService {
         try {
             return dollarApiClient.getOficial();
         } catch (HttpClientErrorException.NotFound e) {
-            log.error("Error in the getOficial method: " + e.getMessage());
+            log.error("Error in the getOficial method: {}", e.getMessage());
             throw new DollarNotFoundException();
         }
     }

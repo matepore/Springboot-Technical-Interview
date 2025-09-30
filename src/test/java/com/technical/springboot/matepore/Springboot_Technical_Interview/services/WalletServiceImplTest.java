@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-@Tag("test of wallet service")
+@DisplayName("tests of wallet's service")
 @ExtendWith(MockitoExtension.class)
 class WalletServiceImplTest {
     @Mock

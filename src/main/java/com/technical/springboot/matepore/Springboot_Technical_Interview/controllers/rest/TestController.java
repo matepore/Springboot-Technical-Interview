@@ -1,4 +1,4 @@
-package com.technical.springboot.matepore.Springboot_Technical_Interview.controllers;
+package com.technical.springboot.matepore.Springboot_Technical_Interview.controllers.rest;
 
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.DollarResponse;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.services.DollarService;

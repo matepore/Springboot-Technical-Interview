@@ -1,7 +1,8 @@
-package com.technical.springboot.matepore.Springboot_Technical_Interview.controllers;
+package com.technical.springboot.matepore.Springboot_Technical_Interview.controllers.rest;
 
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.PersonDto;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.services.PersonService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<PersonDto> create(@RequestBody PersonDto pdto){
+    public ResponseEntity<PersonDto> create(@Valid @RequestBody PersonDto pdto){
         return ResponseEntity.status(HttpStatus.CREATED).body(pService.create(pdto));
     }
 

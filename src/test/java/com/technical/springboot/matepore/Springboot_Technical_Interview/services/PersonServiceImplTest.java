@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@Tag("Test of person service")
+@DisplayName("tests of person's service")
 @ExtendWith(MockitoExtension.class)
 class PersonServiceImplTest {
 
@@ -110,7 +110,7 @@ class PersonServiceImplTest {
     }
 
     @Nested
-    @Tag("Exception")
+    @Tag("Exceptions")
     class ExceptionTests {
         @Test
         @DisplayName("test if the PersonNotFoundException works with findById")

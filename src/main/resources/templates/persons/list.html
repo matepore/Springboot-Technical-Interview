@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons CRUD</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sticky Footer */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1; /* hace que el contenido ocupe el espacio disponible */
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<header class="bg-dark text-white p-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+            <a th:href="@{/}" class="btn btn-outline-light">🏠 Home</a>
+            <h1 class="h3">Persons Management</h1>
+        </div>
+
+        <a th:href="@{/persons/new}" class="btn btn-success">➕ Add New Person</a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Wallet ID</th>
+                    <th>Salary</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="person : ${persons}">
+                    <td th:text="${person.id}"></td>
+                    <td th:text="${person.name}"></td>
+                    <td th:text="${person.lastname}"></td>
+                    <td th:text="${person.wallet != null ? person.wallet.id : 'N/A'}"></td>
+                    <td th:text="${person.wallet != null ? person.wallet.salary : '0'}"></td>
+                    <td class="text-center">
+                        <a th:href="@{'/persons/edit/' + ${person.id}}" class="btn btn-sm btn-primary">✏ Edit</a>
+                        <a th:href="@{'/persons/delete/' + ${person.id}}"
+                           onclick="return confirm('Are you sure you want to delete this person?');"
+                           class="btn btn-sm btn-danger">
+                            🗑 Delete
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+
+                <tfoot>
+                <tr class="table-secondary">
+                    <td colspan="6" class="text-end">
+                        <strong th:text="'Total persons: ' + ${persons.size()}"></strong>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-dark text-light py-3 mt-auto">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2025 - Springboot Web App made by Matepore | All rights reserved</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS (para modales, tooltips, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
