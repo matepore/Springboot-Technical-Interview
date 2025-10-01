@@ -47,7 +47,7 @@ public class WalletServiceImpl implements WalletService {
     public WalletDto findById(Long id) {
         log.info("Trying to find the wallet with the id: {}", id);
         return wRepository.findById(id)
-                .map(wallet -> this.mapDto(wallet))
+                .map(this::mapDto)
                 .orElseThrow(() -> new WalletNotFoundException(id));
     }
 
@@ -73,7 +73,7 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public List<WalletDto> list() {
         log.info("Showing a list of all the wallets.");
-        return wRepository.findAll().stream().map(wallet -> this.mapDto(wallet)).toList();
+        return wRepository.findAll().stream().map(this::mapDto).toList();
     }
 
     private Double getDollarSalary(Double salary){

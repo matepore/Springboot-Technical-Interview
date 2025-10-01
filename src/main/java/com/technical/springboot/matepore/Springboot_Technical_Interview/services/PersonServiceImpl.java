@@ -51,7 +51,7 @@ public class PersonServiceImpl implements PersonService{
     public PersonDto findById(Long id) {
         log.info("Trying to find a person by the id: {}", id);
         return pRepository.findById(id)
-                .map(person -> this.mapDto(person))
+                .map(this::mapDto)
                 .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
@@ -78,6 +78,6 @@ public class PersonServiceImpl implements PersonService{
     public List<PersonDto> list() {
         log.info(telefonoClient.getNumero().getNumero() + " This is a phone number.");
         log.info("Showing a list of all persons.");
-        return pRepository.findAll().stream().map(person -> this.mapDto(person)).toList();
+        return pRepository.findAll().stream().map(this::mapDto).toList();
     }
 }

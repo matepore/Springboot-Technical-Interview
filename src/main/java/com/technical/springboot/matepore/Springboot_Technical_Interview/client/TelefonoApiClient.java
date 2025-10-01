@@ -3,7 +3,6 @@ package com.technical.springboot.matepore.Springboot_Technical_Interview.client;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.dto.TelefonoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

@@ -15,6 +15,9 @@ public class WalletControllerMvc {
 
     private final WalletService walletService;
 
+    public static final String SUCCESS_MSG = "success";
+    public static final String REDIRECT = "redirect:/wallets";
+
     @GetMapping
     public String listWallets(Model model){
         model.addAttribute("wallets", walletService.list());
@@ -30,8 +33,8 @@ public class WalletControllerMvc {
     @PostMapping("/save")
     public String saveWallet(@ModelAttribute("wallet") WalletDto walletDto, RedirectAttributes redirectAttributes){
         walletService.create(walletDto);
-        redirectAttributes.addFlashAttribute("success", "Wallet created successfully!");
-        return "redirect:/wallets";
+        redirectAttributes.addFlashAttribute(SUCCESS_MSG, "Wallet created successfully!");
+        return REDIRECT;
     }
 
     @GetMapping("/edit/{id}")
@@ -44,14 +47,14 @@ public class WalletControllerMvc {
     @PostMapping("/update/{id}")
     public String updateWallet(@PathVariable Long id, @ModelAttribute("wallet") WalletDto walletDto, RedirectAttributes redirectAttributes) {
         walletService.update(id, walletDto);
-        redirectAttributes.addFlashAttribute("success", "Wallet updated successfully!");
-        return "redirect:/wallets";
+        redirectAttributes.addFlashAttribute(SUCCESS_MSG, "Wallet updated successfully!");
+        return REDIRECT;
     }
 
     @GetMapping("/delete/{id}")
     public String deleteWallet(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         walletService.delete(id);
-        redirectAttributes.addFlashAttribute("success", "Wallet deleted successfully!");
-        return "redirect:/wallets";
+        redirectAttributes.addFlashAttribute(SUCCESS_MSG, "Wallet deleted successfully!");
+        return REDIRECT;
     }
 }

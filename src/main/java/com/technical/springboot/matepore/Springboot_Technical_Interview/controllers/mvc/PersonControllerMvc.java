@@ -15,6 +15,9 @@ public class PersonControllerMvc {
 
     private final PersonService personService;
 
+    public static final String SUCCESS_MSG = "success";
+    public static final String REDIRECT = "redirect:/persons";
+
     // LIST
     @GetMapping
     public String listPersons(Model model) {
@@ -34,8 +37,8 @@ public class PersonControllerMvc {
     public String savePerson(@ModelAttribute("person") PersonDto personDto,
                              RedirectAttributes redirectAttributes) {
         personService.create(personDto);
-        redirectAttributes.addFlashAttribute("success", "Person created successfully!");
-        return "redirect:/persons";
+        redirectAttributes.addFlashAttribute(SUCCESS_MSG, "Person created successfully!");
+        return REDIRECT;
     }
 
     // SHOW EDIT FORM
@@ -52,8 +55,8 @@ public class PersonControllerMvc {
                                @ModelAttribute("person") PersonDto personDto,
                                RedirectAttributes redirectAttributes) {
         personService.update(id, personDto);
-        redirectAttributes.addFlashAttribute("success", "Person updated successfully!");
-        return "redirect:/persons";
+        redirectAttributes.addFlashAttribute(SUCCESS_MSG, "Person updated successfully!");
+        return REDIRECT;
     }
 
     // DELETE
@@ -61,7 +64,7 @@ public class PersonControllerMvc {
     public String deletePerson(@PathVariable Long id,
                                RedirectAttributes redirectAttributes) {
         personService.delete(id);
-        redirectAttributes.addFlashAttribute("success", "Person deleted successfully!");
-        return "redirect:/persons";
+        redirectAttributes.addFlashAttribute(SUCCESS_MSG, "Person deleted successfully!");
+        return REDIRECT;
     }
 }

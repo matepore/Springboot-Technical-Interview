@@ -28,13 +28,12 @@ public class HomeControllerMvc {
     // Search handler
     @GetMapping("/search")
     public String search(@RequestParam(name = "q", required = false) String query, Model model) {
-        // Búsqueda de personas (por nombre)
+        // Search for persons (by name)
         List<PersonDto> persons = personService.list().stream()
                 .filter(p -> query != null && p.getName() != null &&
-                        p.getName().toLowerCase().contains(query.toLowerCase()))
-                .toList();
+                        p.getName().toLowerCase().contains(query.toLowerCase())).toList();
 
-        // Búsqueda de wallets (por id, salario o salario en dólares)
+        // Search for wallets (by id, salary or salary in dollars)
         List<WalletDto> wallets = walletService.list().stream()
                 .filter(w -> query != null && (
                         (w.getId() != null && String.valueOf(w.getId()).contains(query)) ||
@@ -47,6 +46,6 @@ public class HomeControllerMvc {
         model.addAttribute("wallets", wallets);
         model.addAttribute("query", query);
 
-        return "search-results"; // Necesitarías crear search-results.html
+        return "search-results";
     }
 }

@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginControllerMvc {
 
-    // Mostrar el formulario de login
+    // Shows the login form
     @GetMapping("/login")
     public String loginForm() {
-        return "login"; // renderiza login.html
+        return "login"; // renders login.html
     }
 
-    // Procesar login
+    // Proccess login
     @PostMapping("/login")
     public String loginSubmit(@RequestParam("username") String username,
                               @RequestParam("password") String password,
                               @RequestParam(value = "remember-me", required = false) String rememberMe,
                               Model model) {
 
-        // Validación simulada: usuario = admin, password = 1234
+        // Simulated validation: usuario = admin, password = 1234
         if ("admin".equals(username) && "1234".equals(password)) {
-            // Redirigir a homepage y activar toast
+            // Redirects to home and shows toast
             model.addAttribute("showToast", true);
             return "redirect:/?loginSuccess=true";
         } else {
-            // Login incorrecto, mostrar mensaje en login.html
+            // Incorrect Login, show the error in login.html
             model.addAttribute("loginError", "Invalid username or password");
             return "login";
         }

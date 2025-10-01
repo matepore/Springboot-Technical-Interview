@@ -9,9 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Propietario {
-    @NotBlank(message = "Nombre no puede estar vacío")
+    @NotBlank(message = "Name cannot be empty")
     private String nombre;
 
-    @NotBlank(message = "Apellido no puede estar vacío")
+    @NotBlank(message = "Lastname cannot be empty")
     private String apellido;
 }

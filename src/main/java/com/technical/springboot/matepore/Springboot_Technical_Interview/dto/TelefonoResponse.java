@@ -17,24 +17,24 @@ public class TelefonoResponse {
 
     private Long id;
 
-    @NotBlank(message = "Codigo de area no puede estar vacío")
+    @NotBlank(message = "Zip code cannot be empty")
     private String codigoArea;
 
-    @NotBlank(message = "Número no puede estar vacío")
+    @NotBlank(message = "The number cannot be empty")
     private String numero;
 
-    @NotBlank(message = "Tipo no puede estar vacío")
+    @NotBlank(message = "Type cannot be empty")
     private String tipo;
 
-    @NotBlank(message = "Operadora no puede estar vacía")
+    @NotBlank(message = "Operator cannot be empty")
     private String operadora;
 
-    @NotBlank(message = "Pais no puede estar vacío")
+    @NotBlank(message = "Country cannot be empty")
     private String pais;
 
-    @NotBlank(message = "Estado no puede estar vacío")
+    @NotBlank(message = "State cannot be empty")
     private String estado;
 
-    @NotNull(message = "Propietario no puede ser nulo")
+    @NotNull(message = "Owner cannot be empty")
     private Propietario propietario;
 }
