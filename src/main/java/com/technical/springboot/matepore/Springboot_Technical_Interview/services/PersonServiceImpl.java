@@ -6,8 +6,6 @@ import com.technical.springboot.matepore.Springboot_Technical_Interview.entities
 import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptions.PersonNotFoundException;
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.PersonRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

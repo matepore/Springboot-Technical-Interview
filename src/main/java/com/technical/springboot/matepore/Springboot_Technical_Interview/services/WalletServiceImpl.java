@@ -6,8 +6,6 @@ import com.technical.springboot.matepore.Springboot_Technical_Interview.exceptio
 import com.technical.springboot.matepore.Springboot_Technical_Interview.repositories.WalletRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +52,6 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    @CachePut(value = "wallets", key = "result.id")
     public WalletDto update(Long id, WalletDto wdto) {
         log.info("Updating the wallet with the id: {}", id);
         Wallet wallet = wRepository.findById(id).orElseThrow(() -> new WalletNotFoundException(id));
@@ -65,7 +62,6 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    @CacheEvict(value = "wallets", key = "#id")
     public void delete(Long id) {
         log.info("Deleting the wallet with the id: {}", id);
         if(!wRepository.existsById(id)){
@@ -81,6 +77,6 @@ public class WalletServiceImpl implements WalletService {
     }
 
     private Double getDollarSalary(Double salary){
-        return salary * dollarService.getBlue().getCompra();
+        return salary / dollarService.getBlue().getCompra();
     }
 }
