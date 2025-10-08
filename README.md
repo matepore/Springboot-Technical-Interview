@@ -2,24 +2,98 @@
 
 This project is a Spring Boot application for a technical interview.
 
-It has:
-- **H2** Database in local memory.
-- **Controller**, **DTO**, **Entity**, **Repository** and **Service** layers.
-- Personalized exceptions.
-- Logs.
-- Caching.
-- Open Api integration.
+# Technical Features
+
+This section describes the features, dependencies and configurations that the project **Springboot-Technical-Interview** has.
 
 ---
 
-## Technologies Used
-- JDK 21
-- Spring Boot 3.5.5
-- Maven
-- H2 Database
-- Lombok
-- Open Api
-- IntelliJ Community Edition 2025 IDE
+## 1. Primary Framework
+
+- **Spring Boot 3.5.5**
+    - It simplifies the configuration and deployment of java applications.
+    - Allows fast integration with JPA, Redis, Thymeleaf y validations.
+
+---
+
+## 2. Language and Version
+
+- **Java 21**
+    - Is being used as the jdk enviroment of the complete project.
+    - This project uses some of the most new additions that Java 21 has to offer.
+
+---
+
+## 3. Database
+
+- **PostgreSQL**
+    - Primary relational database.
+    - Configuration in `application.properties`:
+      ```properties
+      spring.datasource.url=jdbc:postgresql://localhost:5432/db_persons
+      spring.datasource.username=username
+      spring.datasource.password=supercontraseniasecreta
+      spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+      spring.jpa.hibernate.ddl-auto=update
+      spring.jpa.show-sql=true
+      ```
+- **JPA / Hibernate**
+    - Is being use as a language to map objects to relational databases.
+    - It allows CRUD tasks y personalized SQL queries.
+
+---
+
+## 4. Cache and Memory Storage
+
+- **Redis**
+    - Is used as a local memory storage database that is extremely low cost and light, it stores only data.
+    - Configuration in `application.properties`:
+      ```properties
+      spring.redis.host=localhost
+      spring.redis.port=6379
+      spring.cache.type=redis
+      ```
+
+---
+
+## 5. Web Interface
+
+- **Spring Web**
+    - Implements REST and MVC endpoints.
+- **Thymeleaf**
+    - Web template engine for dynamic websites.
+- **Bootstrap**
+    - Is used in the websites as a framework to generate good looking and responsive websites.
+
+---
+
+## 6. Documentation
+
+- **MkDocs Material**
+    - Allows for markdown documentation.
+    - Is being included through a Docker container `http://localhost:8000`.
+- **springdoc-openapi**
+    - It creates automatic documentation for the API REST.
+    - Interactive interface that allow endpoint testing.
+
+---
+
+## 7. Validation and Development
+
+- **Spring Boot Validation**
+    - Validation of DTOs and forms.
+- **Lombok**
+    - It reduces writing of basic structures of objects (getter, setter, constructor, builder).
+- **Spring Boot DevTools**
+    - Hot reload for a fast development.
+
+---
+
+## 8. Testing
+
+- **Spring Boot Starter Test**
+    - Framework of unit and integration tests.
+    - Includes JUnit, Mockito and Spring Test Utilities.
 
 ---
 
@@ -31,10 +105,9 @@ It has:
 - Run the .jar file in the target folder of the project.
 
 ## Useful stuff
-- **H2 Console**: `localhost:8080/h2-console`
-    - The login information is in the application.properties file in the resource folder.
 - **API REST**: `localhost:8080/api/persons` and `localhost:8080/api/wallets`
-- **Open Api Swagger**: `http://localhost:8080/swagger-ui/index.html#/`
+- **Open Api Swagger**: `localhost:8080/swagger-ui/index.html#/`
+- **Thymeleaf Web CRUD**: `localhost:8080/login`
 
 ### Endpoints
 

@@ -37,5 +37,27 @@ services:
       - ./wiremock/__files:/home/wiremock/__files
     restart: unless-stopped
 
+  redis:
+    image: redis:7.2
+    container_name: redis_service
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: [ "redis-server", "--appendonly", "yes" ]
+
+  mkdocs:
+    image: squidfunk/mkdocs-material
+    container_name: mkdocs
+    restart: always
+    ports:
+      - "9003:8000"
+    working_dir: /docs
+    volumes:
+      - ./docs:/docs
+    command: serve -a 0.0.0.0:8000 -f mkdocs.yml  # indicamos explícitamente el yml
+
 volumes:
   postgres_data:
+  redis_data:

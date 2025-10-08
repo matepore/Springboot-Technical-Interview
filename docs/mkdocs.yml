@@ -1,0 +1,28 @@
+site_name: "Mi Documentación"
+theme:
+  name: material
+
+# Carpeta de documentación relativa al mkdocs.yml
+docs_dir: .
+
+# Carpeta para imágenes y otros assets
+# Si tus imágenes están en docs/assets
+extra:
+  assets_dir: assets
+
+# Navegación
+nav:
+  - Home: index.md
+  - Caracteristicas:
+      - Tecnicas: caracteristicas/caracteristicas.md
+      - Funcionales: caracteristicas/funcionales.md
+  - Guía:
+      - Introducción: guia/introduccion.md
+      - Instalación: guia/instalacion.md
+
+# Extensiones Markdown útiles
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
